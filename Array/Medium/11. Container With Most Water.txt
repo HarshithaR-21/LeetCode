@@ -1,0 +1,28 @@
+class Solution {
+public:
+    int min(int a, int b)
+    {
+        if(a <= b) return a;
+        return b;
+    }
+    int maxArea(vector<int>& height) {
+        int maxi =INT_MIN;
+        int totalUnits = INT_MIN;
+        unordered_map<int, int>mpp;
+        for(int i = 0; i < height.size(); i++)
+        {
+            maxi = max(maxi, height[i]);
+            if(mpp.find(maxi) == mpp.end())
+            {
+                mpp[maxi] = i;
+            }
+            for(auto it : mpp)
+            {
+                int mini = min(height[i], it.first);
+                int area= mini * (i-mpp[it.first]);
+                totalUnits = max(totalUnits, area);
+            }
+        }
+        return totalUnits;
+    }
+};

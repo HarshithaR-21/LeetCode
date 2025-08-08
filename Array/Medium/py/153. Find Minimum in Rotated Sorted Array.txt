@@ -1,0 +1,18 @@
+class Solution(object):
+    def findMin(self, a):
+        n = len(a)
+        low, high = 0, n-1
+        mini = sys.maxsize
+        while(low <= high):
+            mid = (low + high)//2
+            if a[low] <= a[high]:
+                mini = min(mini, a[low])
+                break
+            if a[low] <= a[mid]:
+                mini = min(mini, a[low])
+                low = mid + 1
+            else:
+                mini = min(mini, a[mid])
+                high = mid - 1
+        return mini
+        

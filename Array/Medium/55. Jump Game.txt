@@ -1,0 +1,21 @@
+class Solution {
+public:
+    bool f(vector<int> & arr, int ind)
+    {
+        if(arr[ind] == 0)
+        {
+            return false;
+        }
+        if(ind >= arr.size())
+            return true;
+        if(!f(arr, ind))
+        {
+            return f(arr, ind-1);
+        }
+        return true;
+    }
+    bool canJump(vector<int>& nums) {
+        int ind = 0;
+        return f(nums, ind);
+    }
+};
