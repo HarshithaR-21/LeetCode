@@ -1,0 +1,19 @@
+class Solution(object):
+    def countConsistentStrings(self, allowed, words):
+        """
+        :type allowed: str
+        :type words: List[str]
+        :rtype: int
+        """
+        count = 0
+        for substr in words:
+            for i in range(0,len(substr)):
+                if substr[i] in allowed:
+                    status = True
+                else:
+                    status = False
+                    break
+            if status:
+                count+=1
+        return count
+                
